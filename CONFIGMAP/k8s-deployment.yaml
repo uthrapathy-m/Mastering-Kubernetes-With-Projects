@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-multienv-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-multienv
+  template:
+    metadata:
+      labels:
+        app: flask-multienv
+    spec:
+      containers:
+      - name: flask-container
+        image: YOUR_USERNAME/flask-multienv-app
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: multi-env-config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-multienv-service
+spec:
+  type: NodePort
+  selector:
+    app: flask-multienv
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30081
