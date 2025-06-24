@@ -1,10 +1,4 @@
-Absolutely! Here's the **complete Horizontal Pod Autoscaler (HPA) demo**, including:
 
-* YAML files for Deployment and HPA
-* Simulation commands
-* Full README.md documentation
-
----
 
 ## 📁 Folder Structure
 
